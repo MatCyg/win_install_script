@@ -1,0 +1,1 @@
+start /b "C:\Program Files\AutoHotkey\AutoHotkeyU64.exe" "%HOMEPATH%\Projects\win_install_script\AutoHotkey.ahk"
