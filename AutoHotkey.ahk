@@ -1,4 +1,4 @@
-SetTimer,UPDATEDSCRIPT,1000
+#MaxHotkeysPerInterval 200
 
 UPDATEDSCRIPT:
 FileGetAttrib,attribs,%A_ScriptFullPath%
@@ -15,19 +15,29 @@ Return
 
 ;Capslock::Ctrl
 ;LControl::return
+
+
+
+
 #PgUp::AppsKey
 
+
 #a::
-Run, Explorer C:\Users\Administrator\Downloads
+Run, Explorer C:\Users\admin\Downloads
 Return
 
 #c::
 Run, Explorer C:\
 Return
 
+#e::
+Run, Explorer C:\Users\admin\
+Return
+
 #z::
 WinMinimize, A
 Return
+
 
 ; Note: From now on whenever you run AutoHotkey directly, this script
 ; will be loaded.  So feel free to customize it to suit your needs.
@@ -57,18 +67,30 @@ MouseGetPos,, ypos, id
 WinGetClass, class, ahk_id %id%
 If (ypos < 45 and InStr(class,"Chrome_WidgetWin"))
 {
-IfWinNotActive ahk_id %id%
-WinActivate ahk_id %id%
-If A_ThisHotkey = WheelUp
-Send ^{PgUp}
-Else
-Send ^{PgDn}
+	IfWinNotActive ahk_id %id%
+		WinActivate ahk_id %id%
+
+	If A_ThisHotkey = WheelUp
+		Send ^{PgUp}
+	Else
+		Send ^{PgDn}
 }
 Else
 {
-If A_ThisHotkey = WheelUp
-Send {WheelUp}
-Else
-Send {WheelDown}
+	If A_ThisHotkey = WheelUp
+		Send {WheelUp}
+	Else
+		Send {WheelDown}
 }
 Return
+
+
+
+
+;#####   SPOTIFY   #####
+!^F8::Volume_Down
+!^F9::Volume_Up
+
+!^F10::Media_Prev
+!^F11::Media_Play_Pause
+!^F12::Media_Next
